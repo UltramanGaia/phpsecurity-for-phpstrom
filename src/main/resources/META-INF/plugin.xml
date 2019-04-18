@@ -1,0 +1,40 @@
+<idea-plugin>
+    <id>cn.ultramangaia.phpsecurity</id>
+    <name>0PHP Security</name>
+    <vendor email="gaiaaoteman@gmail.com" url="http://ultramangaia.cn">UltramanGaia</vendor>
+
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <depends>com.jetbrains.php</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="PHP Security" secondary="true" icon="/icons/phpsecurity-logo.png" anchor="bottom"
+                    factoryClass="cn.ultramangaia.gui.PHPSecurityToolWindowFactory"/>
+    </extensions>
+
+    <actions>
+        <group id="phpsecurity.AnalyzeMenu" text="PHP Security" icon="/icons/phpsecurity-logo.png" popup="true">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+        </group>
+        <action class="cn.ultramangaia.actions.ScanProjectAction" id="phpsecurity.toolwindow.ScanProjectAction"
+                text="Scan current project" description="Scan current project with simple dataflow analysis" icon="/icons/scan.svg">
+<!--            <keyboard-shortcut first-keystroke="shift ctrl P" keymap="$default"/>-->
+            <add-to-group group-id="phpsecurity.AnalyzeMenu"/>
+        </action>
+        <action class="cn.ultramangaia.actions.ScanCurrentFileAction" id="phpsecurity.toolwindow.ScanCurrentFileAction"
+                text="Scan current file" description="Scan current file with simple dataflow analysis" icon="/icons/scan.svg">
+<!--            <keyboard-shortcut first-keystroke="shift ctrl Q" keymap="$default"/>-->
+            <add-to-group group-id="phpsecurity.AnalyzeMenu"/>
+        </action>
+
+    </actions>
+</idea-plugin>
